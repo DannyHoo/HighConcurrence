@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!--导入属性配置 -->
+    <properties resource="db.properties"></properties>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <classPathEntry location="${jdbc.driverLocation}"/>
+
+    <context id="context" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- This property is used to specify whether MBG will include any coments in the generated code -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- This property is used to specify whether MBG will include the generation timestamp in the generated comments -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.danny.seckill.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.danny.seckill.dao" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 指定数据库表 -->
+        <table schema="" tableName="seckill_item"></table>
+        <table schema="" tableName="seckill_record"></table>
+    </context>
+
+</generatorConfiguration>
