@@ -1,0 +1,2 @@
+# HighConcurrence
+多线程秒杀的Demo（多种锁机制：synchronize、ReentrantLock、ReentrantReadWriteLock、redis和zookeeper实现的分布式锁等）
